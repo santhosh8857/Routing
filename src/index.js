@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
+import Users from "./components/Users";
+import Employees from "./components/Employees";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const routing = (
+  // Parent for the routes
+  <BrowserRouter>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/user">Users</Link>
+        </li>
+        <li>
+          <Link to="/employee">Employees</Link>
+        </li>
+      </ul>
+    </div>
+    {/* Select the desired */}
+    <Switch>
+      {/* use the parent as the last route here - '/'  */}
+      {/* or we can use the exact keyword in the parent */}
+      <Route exact path="/" component={App} />
+      <Route path="/user" component={Users} />
+      <Route path="/employee" component={Employees} />
+    </Switch>
+  </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(routing, document.getElementById("root"));
