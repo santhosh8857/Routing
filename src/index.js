@@ -24,7 +24,7 @@ const routing = (
       {/* use the parent as the last route here - '/'  */}
       {/* or we can use the exact keyword in the parent */}
       <Route exact path="/" component={App} />
-      <Route path="/user" component={Users} />
+      <Route exact path="/user" component={Users} />
       <Route path="/user/:id">
         <UserDetails />
       </Route>
