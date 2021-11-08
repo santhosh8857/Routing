@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 import Users from "./components/Users";
-import Employees from "./components/Employees";
+import UserDetails from "./components/UserDetails";
 
 const routing = (
   // Parent for the routes
@@ -17,9 +17,6 @@ const routing = (
         <li>
           <Link to="/user">Users</Link>
         </li>
-        <li>
-          <Link to="/employee">Employees</Link>
-        </li>
       </ul>
     </div>
     {/* Select the desired */}
@@ -28,7 +25,9 @@ const routing = (
       {/* or we can use the exact keyword in the parent */}
       <Route exact path="/" component={App} />
       <Route path="/user" component={Users} />
-      <Route path="/employee" component={Employees} />
+      <Route path="/user/:id">
+        <UserDetails />
+      </Route>
     </Switch>
   </BrowserRouter>
 );
