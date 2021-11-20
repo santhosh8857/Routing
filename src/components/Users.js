@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "reactstrap";
+import { Button, Table } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router";
+import UserForm from "./UserForm";
 // import { useParams } from "react-router";
 
 const Users = () => {
@@ -21,6 +22,7 @@ const Users = () => {
 
   return (
     <div>
+      <UserForm />
       <Table>
         <thead>
           <tr>
@@ -40,7 +42,7 @@ const Users = () => {
                 <td>{user.email_id}</td>
                 <td>{user.mobile_no}</td>
                 <td>
-                  <button onClick={() => viewUserDeatils(user.id)}>View</button>
+                  <Button onClick={() => viewUserDeatils(user.id)}>View</Button>
                 </td>
               </tr>
             );
