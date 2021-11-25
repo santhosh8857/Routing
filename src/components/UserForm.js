@@ -1,15 +1,35 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
-const UserForm = () => {
+const UserForm = (props) => {
   const [name, setName] = useState("");
   const [email_id, setEmail_id] = useState("");
   const [mobile_no, setMobile_no] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // fetch(props.url, {
+    //   method: "POST",
+    //   body: {
+    //     name: name,
+    //     email_id: email_id,
+    //     mobile_no: mobile_no,
+    //   },
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => console.log(data))
+    //   .catch((err) => console.log(err));
 
-    console.log(name, mobile_no, email_id);
+    axios
+      .post(props.url, {
+        name: name,
+        email_id: email_id,
+        mobile_no: mobile_no,
+      })
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+
+    e.preventDefault();
   };
 
   return (
